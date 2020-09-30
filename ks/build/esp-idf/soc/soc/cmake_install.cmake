@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/mlegeay/Documents/embaudio20/examples/ks/build/esp-idf/soc/soc/esp32/cmake_install.cmake")
+  include("/home/mlegeay/Documents/Aud-project/ks/build/esp-idf/soc/soc/esp32/cmake_install.cmake")
 
 endif()
 

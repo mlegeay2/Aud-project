@@ -1,4 +1,4 @@
-/* * Data converted from /home/mlegeay/Documents/embaudio20/examples/ks/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from /home/mlegeay/Documents/Aud-project/ks/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 .section .rodata.embedded

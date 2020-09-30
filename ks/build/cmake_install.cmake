@@ -1,4 +1,4 @@
-# Install script for directory: /home/mlegeay/Documents/embaudio20/examples/ks
+# Install script for directory: /home/mlegeay/Documents/Aud-project/ks
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/mlegeay/Documents/embaudio20/examples/ks/build/esp-idf/cmake_install.cmake")
+  include("/home/mlegeay/Documents/Aud-project/ks/build/esp-idf/cmake_install.cmake")
 
 endif()
 
@@ -46,5 +46,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/mlegeay/Documents/embaudio20/examples/ks/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/mlegeay/Documents/Aud-project/ks/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

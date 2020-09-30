@@ -12,7 +12,7 @@ public:
   AudioDsp(int SR, int BS);
   bool start();
   void stop();
-  void setFreq(float freq);
+  void setFreq(int midi_fondamentale);
   void trigger();
   float MidiToFreq(int midi);
 private:
@@ -23,7 +23,13 @@ private:
   TaskHandle_t fHandle;
   bool fRunning;
   
-  KS ks;
+  KS ks1;
+  KS ks2;
+  KS ks3;
+  KS ks4;
+  KS ks5;
+  KS ks6;
+
 };
 
 #endif

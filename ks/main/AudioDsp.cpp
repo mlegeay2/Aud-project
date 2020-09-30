@@ -14,7 +14,12 @@ fBufferSize(BS),
 fNumOutputs(2),
 fHandle(nullptr),
 fRunning(false),
-ks(SR)
+ks1 (SR),
+ks2 (SR),
+ks3 (SR),
+ks4 (SR),
+ks5 (SR),
+ks6 (SR)
 {
   // config i2s pin numbers
   i2s_pin_config_t pin_config;
@@ -69,12 +74,24 @@ void AudioDsp::stop()
   }
 }
 
-void AudioDsp::setFreq(float freq){
-  ks.setFreq(freq);
+void AudioDsp::setFreq(int midi_fondamentale){
+
+
+  ks1.setFreq(MidiToFreq(midi_fondamentale));
+  ks2.setFreq(MidiToFreq(midi_fondamentale+2));
+  ks3.setFreq(MidiToFreq(midi_fondamentale+4));
+  ks4.setFreq(MidiToFreq(midi_fondamentale+6));
+  ks5.setFreq(MidiToFreq(midi_fondamentale+8));
+  ks6.setFreq(MidiToFreq(midi_fondamentale+9));
 }
 
 void AudioDsp::trigger(){
-  ks.trigger();
+  ks1.trigger();
+  ks2.trigger();
+  ks3.trigger();
+  ks4.trigger();
+  ks5.trigger();
+  ks6.trigger();
 }
 
 //Convert a midi note to a frequency
@@ -91,7 +108,7 @@ void AudioDsp::audioTask()
     // processing buffers
     for (int i = 0; i < fBufferSize; i++) {
       // DSP
-      float currentSample = ks.tick();
+      float currentSample = ks1.tick() + ks2.tick() + ks3.tick() + ks4.tick() + ks5.tick() + ks6.tick();
       
       // copying to output buffer
       samples_data_out[i*fNumOutputs] = currentSample*MULT_S16;

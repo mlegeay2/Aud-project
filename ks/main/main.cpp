@@ -22,13 +22,13 @@ void app_main(void)
   audioDsp.start();
 
   // infinite loop playing a little melody
-  int melody[15] = {80, 77, 80, 72, 72, 0, 0, 80, 77, 80, 73, 75, 0, 0};
+  int melody[16] = {72, 72, 72, 72, 81, 81, 81, 81, 76, 76, 76, 76, 79, 79, 79, 79};
 
   // infinite loop
   while(1) {
-    for(int i=0; i< 15 ; i++){  
+    for(int i=0; i< 16 ; i++){  
 
-      audioDsp.setFreq(audioDsp.MidiToFreq(melody [i]));
+      audioDsp.setFreq(melody [i]);
       audioDsp.trigger();
       vTaskDelay(600 / portTICK_PERIOD_MS);
     }

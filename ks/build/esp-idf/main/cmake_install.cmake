@@ -1,4 +1,4 @@
-# Install script for directory: /home/mlegeay/Documents/embaudio20/examples/ks/main
+# Install script for directory: /home/mlegeay/Documents/Aud-project/ks/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

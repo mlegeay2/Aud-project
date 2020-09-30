@@ -1441,7 +1441,7 @@ rule CXX_STATIC_LIBRARY_LINKER____idf_main
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /usr/bin/cmake -S/home/mlegeay/Documents/embaudio20/examples/ks -B/home/mlegeay/Documents/embaudio20/examples/ks/build
+  command = /usr/bin/cmake -S/home/mlegeay/Documents/Aud-project/ks -B/home/mlegeay/Documents/Aud-project/ks/build
   description = Re-running CMake...
   generator = 1
 
