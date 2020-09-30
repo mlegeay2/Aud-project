@@ -1,0 +1,1 @@
+cmd='/usr/bin/cmake;-DSDKCONFIG=/home/mlegeay/Documents/embaudio20/examples/ks/sdkconfig;-DIDF_PATH=/opt/esp-idf;-DIDF_TARGET=esp32;-DPYTHON_DEPS_CHECKED=1;-DPYTHON=/opt/idf_tools/python_env/idf4.3_py2.7_env/bin/python;-DEXTRA_COMPONENT_DIRS=/opt/esp-idf/components/bootloader;-DLEGACY_INCLUDE_COMMON_HEADERS=;-GNinja;<SOURCE_DIR><SOURCE_SUBDIR>'
