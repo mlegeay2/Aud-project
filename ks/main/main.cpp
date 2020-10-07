@@ -23,14 +23,16 @@ void app_main(void)
 
   // infinite loop playing a little melody
   int melody[16] = {72, 72, 72, 72, 81, 81, 81, 81, 76, 76, 76, 76, 79, 79, 79, 79};
+  int tonalites[16] = {0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0};
+  //int gain_premiere_corde = {};
 
   // infinite loop
   while(1) {
     for(int i=0; i< 16 ; i++){  
 
-      audioDsp.setFreq(melody [i]);
+      audioDsp.setFreq(melody [i], tonalites[i]);
       audioDsp.trigger();
-      vTaskDelay(600 / portTICK_PERIOD_MS);
+      vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
   }
 

@@ -74,15 +74,30 @@ void AudioDsp::stop()
   }
 }
 
-void AudioDsp::setFreq(int midi_fondamentale){
+void AudioDsp::setFreq(int midi_fondamentale, int tonalite){
+
+  //majeure
+  if (tonalite == 0){
+    ks1.setFreq(MidiToFreq(midi_fondamentale));
+    ks2.setFreq(MidiToFreq(midi_fondamentale+4));
+    ks3.setFreq(MidiToFreq(midi_fondamentale+7));
+    ks4.setFreq(MidiToFreq(midi_fondamentale-12));
+    ks5.setFreq(MidiToFreq(midi_fondamentale-8));
+    ks6.setFreq(MidiToFreq(midi_fondamentale-5));
+  }
+
+  //mineur
+  if (tonalite == 1){
+    ks1.setFreq(MidiToFreq(midi_fondamentale));
+    ks2.setFreq(MidiToFreq(midi_fondamentale+3));
+    ks3.setFreq(MidiToFreq(midi_fondamentale+7));
+    ks4.setFreq(MidiToFreq(midi_fondamentale-12));
+    ks5.setFreq(MidiToFreq(midi_fondamentale-9));
+    ks6.setFreq(MidiToFreq(midi_fondamentale-5));
+  }
 
 
-  ks1.setFreq(MidiToFreq(midi_fondamentale));
-  ks2.setFreq(MidiToFreq(midi_fondamentale+4));
-  ks3.setFreq(MidiToFreq(midi_fondamentale+7));
-  ks4.setFreq(MidiToFreq(midi_fondamentale-12));
-  ks5.setFreq(MidiToFreq(midi_fondamentale-8));
-  ks6.setFreq(MidiToFreq(midi_fondamentale-5));
+  
 }
 
 void AudioDsp::trigger(){

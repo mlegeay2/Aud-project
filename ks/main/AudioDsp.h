@@ -12,7 +12,7 @@ public:
   AudioDsp(int SR, int BS);
   bool start();
   void stop();
-  void setFreq(int midi_fondamentale);
+  void setFreq(int midi_fondamentale, int tonalite);
   void trigger();
   float MidiToFreq(int midi);
 private:
