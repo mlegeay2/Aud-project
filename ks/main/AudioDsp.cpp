@@ -78,11 +78,11 @@ void AudioDsp::setFreq(int midi_fondamentale){
 
 
   ks1.setFreq(MidiToFreq(midi_fondamentale));
-  ks2.setFreq(MidiToFreq(midi_fondamentale+2));
-  ks3.setFreq(MidiToFreq(midi_fondamentale+4));
-  ks4.setFreq(MidiToFreq(midi_fondamentale+6));
-  ks5.setFreq(MidiToFreq(midi_fondamentale+8));
-  ks6.setFreq(MidiToFreq(midi_fondamentale+9));
+  ks2.setFreq(MidiToFreq(midi_fondamentale+4));
+  ks3.setFreq(MidiToFreq(midi_fondamentale+7));
+  ks4.setFreq(MidiToFreq(midi_fondamentale-12));
+  ks5.setFreq(MidiToFreq(midi_fondamentale-8));
+  ks6.setFreq(MidiToFreq(midi_fondamentale-5));
 }
 
 void AudioDsp::trigger(){
