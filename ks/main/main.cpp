@@ -22,22 +22,24 @@ void app_main(void)
   AudioDsp audioDsp(48000,16);
   audioDsp.start();
 
-  ButtonHandler buttonHandler(2,20);
+  ButtonHandler buttonHandler(1,10);
 
   // infinite loop playing a little melody
   int melody[16] = {72,72,72,72,76,76,76,76,81,81,81,81,81,81,81,81};
   int tonalites[16] = {0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
   //int gain_premiere_corde = {};
+  
 
   // infinite loop
   while(1) {
-    buttonHandler.tick();
     
-    float pulse = buttonHandler.getValue()*100 + 80;
-    std::cout << "Carrier Freq: " << pulse << "\n";
     
     
     for(int i=0; i< 16 ; i++){  
+
+      buttonHandler.tick();
+      float pulse = buttonHandler.getValue()*100 + 80;
+      std::cout << "Carrier Freq: " << pulse << "\n";
 
       audioDsp.setFreq(melody [i], tonalites[i]);
       audioDsp.trigger();
