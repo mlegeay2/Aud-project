@@ -102,10 +102,15 @@ void AudioDsp::setFreq(int midi_fondamentale, int tonalite){
 
 void AudioDsp::trigger(){
   ks1.trigger();
+  vTaskDelay(100/portTICK_PERIOD_MS);
   ks2.trigger();
+  vTaskDelay(30/portTICK_PERIOD_MS);
   ks3.trigger();
+  vTaskDelay(30/portTICK_PERIOD_MS);
   ks4.trigger();
+  vTaskDelay(30/portTICK_PERIOD_MS);
   ks5.trigger();
+  vTaskDelay(30/portTICK_PERIOD_MS);
   ks6.trigger();
 }
 
@@ -123,7 +128,7 @@ void AudioDsp::audioTask()
     // processing buffers
     for (int i = 0; i < fBufferSize; i++) {
       // DSP
-      float currentSample = ks1.tick() + ks2.tick() + ks3.tick() + ks4.tick() + ks5.tick() + ks6.tick();
+      float currentSample = 1*ks1.tick() + 0.35*ks2.tick() + 0.35*ks3.tick() + 0.35*ks4.tick() + 0.35*ks5.tick() + 0.35*ks6.tick();
       
       // copying to output buffer
       samples_data_out[i*fNumOutputs] = currentSample*MULT_S16;
