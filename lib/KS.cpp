@@ -2,7 +2,7 @@
 
 #include "KS.h"
 
-KS::KS(int SR) : 
+KS::KS(int SR) :
 feedback(0.999),
 samplingRate(SR),
 zeroDel(0.0),
@@ -27,7 +27,7 @@ KS::~KS()
 void KS::setFeedback(float f){
   feedback = f;
 }
-    
+
 void KS::setFreq(float f){
   del = samplingRate/f;
 }
@@ -37,11 +37,11 @@ void KS::trigger(){
 }
 
 float KS::oneZero(float x){
-  float output = (x + zeroDel)*0.5; 
+  float output = (x + zeroDel)*0.5;
   zeroDel = output;
   return output;
 }
-    
+
 float KS::tick(){
   float excitation;
   if(trig){

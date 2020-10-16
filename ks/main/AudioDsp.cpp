@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <cmath>
 #include <algorithm>
+#include <stdlib.h>
+#include <time.h>
 
 #include "AudioDsp.h"
 #include "driver/i2s.h"
@@ -8,7 +10,7 @@
 #define MULT_S16 32767
 #define DIV_S32 4.6566129e-10
 
-AudioDsp::AudioDsp(int SR, int BS) : 
+AudioDsp::AudioDsp(int SR, int BS) :
 fSampleRate(SR),
 fBufferSize(BS),
 fNumOutputs(2),
@@ -29,7 +31,7 @@ ks6 (SR)
     .data_out_num = 26,
     .data_in_num = 35
   };
-  
+
   // config i2
   i2s_config_t i2s_config = {
     .mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_TX | I2S_MODE_RX),
@@ -44,7 +46,7 @@ ks6 (SR)
     .tx_desc_auto_clear = true,
     .fixed_mclk = false
   };
-  
+
   // installing i2s driver
   i2s_driver_install((i2s_port_t)0, &i2s_config, 0, nullptr);
   i2s_set_pin((i2s_port_t)0, &pin_config);
@@ -58,7 +60,7 @@ bool AudioDsp::start()
   if (!fRunning) {
     fRunning = true;
     return (xTaskCreatePinnedToCore(audioTaskHandler, "Audio DSP Task", 4096, (void*)this, 24, &fHandle, 0) == pdPASS);
-  } 
+  }
   else {
     return true;
   }
@@ -97,21 +99,34 @@ void AudioDsp::setFreq(int midi_fondamentale, int tonalite){
   }
 
 
-  
+
 }
 
 void AudioDsp::trigger(){
   ks1.trigger();
   vTaskDelay(100/portTICK_PERIOD_MS);
+
+
+  srand((unsigned)time(0));
+  int nRand ;
+  nRand= (rand() % 30) + 10;
   ks2.trigger();
-  vTaskDelay(30/portTICK_PERIOD_MS);
+  vTaskDelay(nRand/portTICK_PERIOD_MS);
+
+  nRand= (rand() % 30) + 10;
   ks3.trigger();
-  vTaskDelay(30/portTICK_PERIOD_MS);
+  vTaskDelay(nRand/portTICK_PERIOD_MS);
+
+  nRand= (rand() % 30) + 10;
   ks4.trigger();
-  vTaskDelay(30/portTICK_PERIOD_MS);
+  vTaskDelay(nRand/portTICK_PERIOD_MS);
+
+  nRand= (rand() % 30) + 10;
   ks5.trigger();
-  vTaskDelay(30/portTICK_PERIOD_MS);
+  vTaskDelay(nRand/portTICK_PERIOD_MS);
+
   ks6.trigger();
+
 }
 
 //Convert a midi note to a frequency
@@ -124,12 +139,12 @@ void AudioDsp::audioTask()
   // inifinite loop
   while (fRunning) {
     int16_t samples_data_out[fNumOutputs*fBufferSize];
-    
+
     // processing buffers
     for (int i = 0; i < fBufferSize; i++) {
       // DSP
-      float currentSample = 1*ks1.tick() + 0.35*ks2.tick() + 0.35*ks3.tick() + 0.35*ks4.tick() + 0.35*ks5.tick() + 0.35*ks6.tick();
-      
+      float currentSample = 0.8*ks1.tick() + 0.25*ks2.tick() + 0.25*ks3.tick() + 0.25*ks4.tick() + 0.25*ks5.tick() + 0.25*ks6.tick();
+
       // copying to output buffer
       samples_data_out[i*fNumOutputs] = currentSample*MULT_S16;
       samples_data_out[i*fNumOutputs+1] = samples_data_out[i*fNumOutputs];

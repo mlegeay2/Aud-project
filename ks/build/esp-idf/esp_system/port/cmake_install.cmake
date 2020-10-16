@@ -1,4 +1,4 @@
-# Install script for directory: /Users/agathebernet-rollande/esp/esp-idf/components/esp_system/port
+# Install script for directory: /opt/esp-idf/components/esp_system/port
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -32,14 +32,9 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "TRUE")
 endif()
 
-# Set default install directory permissions.
-if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/Users/agathebernet-rollande/.espressif/tools/xtensa-esp32-elf/esp-2020r3-8.4.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-objdump")
-endif()
-
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/agathebernet-rollande/Documents/Aud-project/ks/build/esp-idf/esp_system/port/esp32/cmake_install.cmake")
+  include("/home/mlegeay/Documents/Aud-project/ks/build/esp-idf/esp_system/port/esp32/cmake_install.cmake")
 
 endif()
 
